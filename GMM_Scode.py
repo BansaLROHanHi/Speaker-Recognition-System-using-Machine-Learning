@@ -53,8 +53,8 @@ def identify(test, model):                     #function to identify speaker of 
 
 print("Extracting features...\n")
 spkr_ftrs={}
-for direc in os.listdir("Speaker Data-Training"):   #opening directories of training dataset
-    Path=os.path.join("Speaker Data-Training", direc)
+for direc in os.listdir("Audio Data\\Speaker Data-Training"):   #opening directories of training dataset
+    Path=os.path.join("Audio Data\\Speaker Data-Training", direc)
     if os.path.isdir(Path):
         spkr_ftrs[direc]=folder(Path)               #by folder function feature matrix of each speaker is stored in spkr_ftrs
         print(f"Features shape of speaker: ",direc," : ", spkr_ftrs[direc].shape)
@@ -70,8 +70,8 @@ print("-" *40)
 total=0
 correct=0
 
-for folder in os.listdir("Testing Data"):    #opening testing dataset
-    path=os.path.join("Testing Data", folder)
+for folder in os.listdir("Audio Data\\Testing Data"):    #opening testing dataset
+    path=os.path.join("Audio Data\\Testing Data", folder)
     if os.path.isdir(path):
         for file in os.listdir(path):
             total += 1                      #for every audio file, total increments by 1
@@ -92,8 +92,8 @@ print("\nUnidentified Test Cases\n")       #unidentified test set
 print("Audio File\t\tIdentified Speaker")
 print("-" *40)
 
-for file in os.listdir("Unidentified TestCases"): #opening directory
-    audio=os.path.join("Unidentified TestCases", file)
+for file in os.listdir("Audio Data\\Unidentified TestCases"): #opening directory
+    audio=os.path.join("Audio Data\\Unidentified TestCases", file)
     guess=identify(audio, model)          #identified speaker
     print(f"{file}\t\t{guess}")
 
